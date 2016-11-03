@@ -1,0 +1,42 @@
+button, input, select,
+{
+  font-family : inherit;
+  font-size   : 100%;
+  width : 160px;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+           box-sizing: border-box;
+}
+
+h1
+{
+  font : 2em "typewriter", sans-serif;
+  text-align: center;
+}
+
+div{
+  width  : 550px;
+  height : 1400px;
+  margin : 0 auto;
+}
+
+form {
+  width  : 450px;
+  height : 670px;
+  margin-left: 10px;
+}
+
+.encabezado
+{
+  font:20px Arial, Helvetica, sans-serif;
+}
+
+#botonEnviar
+{
+   width: 92px;
+   height: 35px;
+   margin-left: 320px;
+   background: #2E9AFE;
+   border: 1px Solid #CEF6F5
+}
