@@ -69,7 +69,6 @@
   </html>";
 
   echo $cad;
-  $nombre = "../generados/".$titulo.".html";
-  $archivo=fopen($nombre,"w+");
-  fputs($archivo,$cad);
+
+
 ?>
