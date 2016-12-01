@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <title>Catalogo</title>
+        <meta charset="utf-8">
+        <script>
+
+                  window.addEventListener("load",function(){
+
+                    var lista = $("lista");
+                    var panelizq = $("panel-izquierdo");
+
+
+                    lista.addEventListener("change",function(event){
+
+                            var val = lista.value;
+                            var lista2 = e("select",{"id":"profesores"});
+
+
+                            var xmlhttp=new XMLHttpRequest();
+                                xmlhttp.onreadystatechange = function() {
+                                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                        var jsonResponse = xmlhttp.responseText;
+                                        var objeto_json = JSON.parse(jsonResponse);
+
+                                        for (var i = 0; i < objeto_json.length;i++) {
+
+                                            var ins_prof = objeto_json[i].instituto_id;
+                                            var id_prof  = objeto_json[i].id;
+                                            var nombre   = objeto_json[i].nombres;
+
+                                            if(val == ins_prof){
+                                               item = e("option",{"value":id_prof,"on-click":(evt)=>{ muestraInfo(evt.target.value)}},nombre);
+                                                lista2.appendChild(item);
+
+                                            }
+
+
+                                        }
+
+                                    }
+                                }
+                                xmlhttp.open("GET","http://edutm.utm.mx:9000/?/db/profesor");
+                                xmlhttp.send();
+
+                                panelizq.appendChild(lista2);
+                                if(panelizq.children.length>1)
+                                   panelizq.removeChild(panelizq.children[0]);
+
+
+                    });
+                  });
+
+                  function muestraInfo(key){
+                    var gradoArray =["Na","Licenciatura","Maestria","Doctorado"];
+                    var estados =["Activo","Licencia","Sabatico"];
+                    var linfo = e("ul",{"id":"linfo"});
+
+                    var d = $("panel-info");
+                    d.appendChild(linfo);
+
+                    var xmlhttp=new XMLHttpRequest();
+                        xmlhttp.onreadystatechange = function() {
+                             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                                var jsonResponse = xmlhttp.responseText;
+                                var datos = JSON.parse(jsonResponse);
+
+
+                                var nombre    = e("li",{"id":"nombre"},"Nombre: "+datos.nombres);
+                                var apellidos = e("li",{"id":"apellidos"},"Apellidos: "+datos.apellidos);
+                                var carrera = e("li",{"id":"carrera"},"Carrera_id: "+datos.carrera_id);
+                                var grado = e("li",{"id":"grado"},"Grado: "+gradoArray[datos.grado]);
+                                var correo = e("li",{"id":"correo"},"Correo: "+datos.correo);
+                                var estado = e("li",{"id":"estado"},"Estado: "+estados[datos.activo]);
+                                linfo.appendChild(nombre);
+                                linfo.appendChild(apellidos);
+                                linfo.appendChild(carrera);
+                                linfo.appendChild(grado);
+                                linfo.appendChild(correo);
+                                linfo.appendChild(estado);
+
+                                if(d.children.length>1)
+                                  d.removeChild(d.children[0]);
+                                }
+
+                            }
+                        xmlhttp.open("GET","http://edutm.utm.mx:9000/?/db/profesor/"+key);
+                        xmlhttp.send();
+
+
+
+
+                  }
+
+                  function $(id){
+                    var r = null;
+                    if(typeof id =="array") r = id.map($);
+
+                    else r = document.getElementById(id);
+                    return r;
+                  }
+
+                  function e(tag){
+                      var ele = document.createElement(tag);
+                      if(arguments.length > 1 ){
+                          var seg = arguments[1];
+                          var pri=1;
+                          if(!(seg instanceof HTMLElement) &&(typeof seg=="object")){
+                              for(attr in seg){
+                                  var p = attr.substr(0,3);
+                                  if(p!="on-"){
+                                      ele.setAttribute(attr,seg[attr]);
+                                  }
+                                  else{
+                                      var ev = attr.substr(3);
+                                      ele.addEventListener(ev,seg[attr]);
+                                  }
+                                  var pri=2;
+                              }
+                              for(var i = pri;i<arguments.length;i++){
+                                  var e1 = arguments[i];
+                                  if(e1 instanceof HTMLElement){
+                                      ele.appendChild(e1);
+                                  }
+                                  else if(typeof e1 == "string"){
+                                      var nel = document.createTextNode(e1);
+                                      ele.appendChild(nel);
+                                  }
+                                  else{
+                                      console.warn("Tipo no reconocido",e1);
+                                      throw "Tipo de argumento no reconocido";
+                                  }
+
+                              }
+                              return ele;
+
+                          }
+
+                      }
+
+                  }
+
+        </script>
+        <style>
+        @import url('https://fonts.googleapis.com/css?family=Merriweather');
+        @import url('https://fonts.googleapis.com/css?family=Gentium+Basic');
+            #panel-izquierdo{
+                float: left;
+                margin-top:25px;
+                width: 250px;
+                height: 400px;
+                background: white;
+            }
+
+            #panel-info{
+              width: 450px;
+              height: 450px;
+              background: white;
+            }
+
+            #encabezado{
+              display: block;
+              background: black;
+              height: 75px;
+              margin-bottom: 15px;
+            }
+
+            h1{
+              font-family: 'Merriweather', serif;
+              font-size: 45px;
+              text-align: center;
+              color: white;
+            }
+
+            label{
+              font-family: 'Gentium Basic', serif;
+              font-size: 25px;
+              display: block;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              background: black;
+              color: white;
+              width: 200px;
+              text-align: center;
+            }
+            option{
+              font: 20px Helvetica;
+            }
+            li{
+              display: block;
+              font: 18px Helvetica;
+            }
+
+            #contD{
+              width: 450px;
+              height: 450px;
+              margin-left: 500px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div id="encabezado">
+          <h1>Catálogo de profesores</h1>
+        </div>
+
+        <label>Listado</label>
+        <select name="institutos" id="lista">
+           <option value="0">Institutos</option>
+           <option value="2">Computación</option>
+           <option value="17">Diseño</option>
+           <option value="14">Electrónica</option>
+           <option value="14">Mecatrónica</option>
+           <option value="18">Matemáticas</option>
+           <option value="23">Industrial</option>
+        </select>
+        <label>Profesores</label>
+        <div id="panel-izquierdo">
+        </div>
+
+        <div id="contD">
+          <label>Información</label>
+          <div id="panel-info"></div>
+        </div>
+    </body>
+</html>
