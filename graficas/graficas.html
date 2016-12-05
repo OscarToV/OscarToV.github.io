@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Catalogo de profesores</title>
+	<title>Graficas</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="catalogoEstilos.css" type="text/css">
-	<script type="text/javascript" src="funcionesCat.js"></script>
+	<script type="text/javascript" src="funcionesGraf.js"></script>
+	<script src="Chart.bundle.js"></script>
+	<script src="utils.js"></script>
 </head>
 <body>
-	<div id="encabezado">Catálogo de Profesores</div>
+	<div id="encabezado">Gráficas</div>
 
 	<div id="menu">
 		<nav>
@@ -27,21 +29,16 @@
 	<div id="botones">
 			<label>Listado</label>
 
-			<select name="institutos" id="listaInstitutos">
-	           <option value="0" selected="selected">Institutos</option>
-	           <option value="2">Computación</option>
-	           <option value="17">Diseño</option>
-	           <option value="14">Electrónica y Mecatronica</option>
-	           <option value="18">Matemáticas</option>
-	           <option value="23">Industrial</option>
-	           <option value="15">Ciencias Sociales y Humanidades</option>
-	           <option value="16">Agroindustrias</option>
+			<select name="opciones" id="opciones">
+	           <option value="0" selected="selected">Opciones</option>
+	           <option value="1">Por Instituto</option>
+	           <option value="2">Promedio Alumnos Por Año</option>
     		</select>
-    		<label>Profesores</label>
+    		<label>Años</label>
 	</div>
 
-	<div id="datos">
-		<div id="cajaInterna"></div>
+	<div id="grafica">
+		<canvas id="canvas" width="500" height="300"></canvas>
 	</div>
 	<br><br><br><br><br><br><br>
 	<div id="pie">

@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Gentium+Basic');
+#encabezado{
+	  display: block;
+	  background: black;
+	  height: 75px;
+	  margin-bottom: 15px;
+	  font-family: 'Merriweather', serif;
+      font-size: 45px;
+      text-align: center;
+      color: white;
+}
+
+#menu{
+	display: block;
+	height: 100px;
+}
+
+#botones{
+	background: white;
+	float: left;
+	display: inline;
+	width: 30%;
+	height: 300px;
+	margin-top: 30px;
+}
+
+#datos{
+	background: white;
+	display: block;
+	width: 70%;
+	margin-left: 30%;
+	height: 300px;
+	margin-top: 30px;
+}
+
+#cajaInterna{
+	background: white;
+	display: block;
+	width: 70%;
+	height: 200px;
+	margin: 0 auto;
+}
+
+#grafica{
+	background: white;
+	display: block;
+	width: 70%;
+	margin-left: 30%;
+	height: 700px;
+	margin-top: 30px;
+}
+
+nav  {
+    display:block;
+    margin: 0 auto;
+    width: 75%;
+    overflow: hidden;
+}
+
+nav ul {
+    margin: 10px 0 20px 25px;
+    padding: .7em;
+    float: left;
+    list-style: none;
+    background: #444;
+    background: rgba(0,0,0,.2);
+    border-radius: .5em;
+    box-shadow: 0 1px 0 rgba(255,255,255,.2), 0 2px 1px rgba(0,0,0,.8) inset;
+}
+
+nav li {
+    float:left;
+}
+
+nav a {
+    float:left;
+    padding: .8em 1.5em;
+    text-decoration: none;
+    color: #555;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    font: bold 1.1em/1 'trebuchet MS', Arial, Helvetica;
+    letter-spacing: 1px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff #ccc #999 #eee;
+    background: #c1c1c1;
+    background: linear-gradient(#f5f5f5, #c1c1c1);
+ }
+
+nav a:hover, nav a:focus {
+    outline: 0;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.2);
+    background: #fac754;
+    background: linear-gradient(#fac754, #f8ac00);
+}
+
+label{
+      font-family: 'Gentium Basic', serif;
+      font-size: 25px;
+      display: block;
+      margin-left:5%;
+      margin-top: 5px;
+      background: black;
+      color: white;
+      width: 300px;
+      text-align: center;
+ }
+
+ option{
+      	font: 20px Helvetica;
+      	width: 200px;
+    	}
+ select{
+ 		margin-top: 10px;
+ 		margin-left: 12%;
+ }
+
+ #linfo {
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    font: 15px 'trebuchet MS', 'lucida sans';
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+
+#linfo ol {
+    margin: 0 0 0 2em;
+}
+
+#linfo li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+}
+
+#linfo li:hover{
+    background: #eee;
+}
+
+#linfo li:hover:before{
+    transform: rotate(360deg);
+}
+
+#linfo li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+
+#pie{
+  height: 75px;
+  font-family: 'Gentium Basic', serif;
+  font-size: 13px;
+  text-align: center;
+  color: white;
+  background: black;
+}
+
+canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+}
