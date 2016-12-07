@@ -6,9 +6,9 @@
 	  height: 75px;
 	  margin-bottom: 15px;
 	  font-family: 'Merriweather', serif;
-      font-size: 45px;
-      text-align: center;
-      color: white;
+    font-size: 45px;
+    text-align: center;
+    color: white;
 }
 
 #menu{
@@ -184,3 +184,30 @@ canvas {
 		-webkit-user-select: none;
 		-ms-user-select: none;
 }
+
+h1{
+  font-family: 'Merriweather', serif;
+  font-size: 50px;
+}
+
+
+h2{
+  font-family: 'Merriweather', serif;
+  font-size: 35px;
+}
+p{
+  font-family: 'Gentium Basic', serif;
+  font-size: 20px;
+  text-align: justify;
+}
+
+#Dprincipal{
+	display: block;
+	margin: 0 auto;
+  width: 800px;
+}
+
+#entradas a:link {text-decoration:none; color: #0984b1; font: 20px 'Merriweather', serif; }
+#entradas a:visited {text-decoration:none; color:#0a76e6; font: 20px 'Merriweather', serif;}
+#entradas a:active {text-decoration:none; color:#99FF00; background:#EEEEEE; font: 20px 'Merriweather', serif;}
+#entradas a:hover {text-decoration:underline; color:#080809; background: #EEEEEE; font: 20px 'Merriweather', serif; }
